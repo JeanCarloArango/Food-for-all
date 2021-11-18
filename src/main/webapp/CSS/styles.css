@@ -15,6 +15,24 @@
 }
 
 /* Main Menu Styles */
-.nav {
+a {
+	text-decoration: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #000;	
+	padding-inline: 1em;
 	padding-block: 1em;
+}
+
+a:hover {
+	color: #FFF;
+	background: #000;
+}
+
+.nav {
+	display: flex;
+	padding-block: 1em;
+	max-width: 800px; 
+	justify-content: space-around;
+	align-items: center;
 }
