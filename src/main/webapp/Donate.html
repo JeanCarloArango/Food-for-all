@@ -12,15 +12,44 @@
 			
 			<div class="col">
 				
-				<input placeholder="Nombre" class="textIn" id="txtName">
+				<label for="txtDonor" class="lbl" id="lblDes">Tipo Donador</label> 
+				<br>
+				<select class="comboBox" id="txtDonor">
+					<option class="selOp">-- Selecciona Tipo de Donador --</option>
+					<option class="selOp">Persona</option>
+					<option class="selOp">Organizacion</option>
+				</select> 
 				<br><br>
-				<input placeholder="Telefono" class="textIn" id="txtPhone">
+				<input type="text" placeholder="Nombre" class="textIn" id="txtName">
 				<br><br>
-				<input placeholder="Que vas a donar?" class="textIn" id="txtPhone">
+				<input type="email" placeholder="E-mail" class="textIn" id="txtEmail">
+				<br><br>
+				<input type="text" placeholder="Telefono" class="textIn" id="txtPhone">
+				<br><br>
+				<input type="text" placeholder="Direccion" class="textIn" id="txtAddress">
+				<br><br>
+				<input type="text" placeholder="Que vas a donar?" class="textIn" id="txtPhone">
 				<br>
 				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo mercado pones 1</span>
 				<br><br>
-				<input placeholder="Cantidad" class="textIn" id="txtCant">
+				<input type="number" placeholder="Cantidad" class="textIn" id="txtCant">
+				<br><br>
+				<label for="txtPr" class="lbl" id="lblDes">Tipo Producto</label> 
+				<br>
+				<select class="comboBox" id="txtPr">
+					<option class="selOp">-- Selecciona Tipo de Producto --</option>
+					<option class="selOp">Peresedero</option>
+					<option class="selOp">No Peresedero</option>
+				</select> 
+				<br><br>
+				<label for="txtStPr" class="lbl" id="lblDes">Estado Producto</label> 
+				<br>
+				<select class="comboBox" id="txtStPr">
+					<option class="selOp">-- Selecciona Estado del Producto --</option>
+					<option class="selOp">Proximo a Vencer</option>
+					<option class="selOp">En Fecha</option>
+					<option class="selOp">En Descomposicion</option>
+				</select> 
 				<br><br>
 				<input type="button" value="Donar" class="btn" id="btnDonate"> 
 				
