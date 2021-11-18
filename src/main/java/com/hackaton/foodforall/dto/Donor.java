@@ -6,29 +6,19 @@ public class Donor {
 		person, organization
 	}
 
-	private String id;
 	private String name;
 	private String email;
 	private String phone;
 	private String community;
 	Edonor type;
 
-	public Donor(String id, String name, String email, String phone, String community, Edonor type) {
+	public Donor(String name, String email, String phone, String community, Edonor type) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.community = community;
 		this.type = type;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getName() {

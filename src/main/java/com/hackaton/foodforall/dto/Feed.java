@@ -1,30 +1,20 @@
 package com.hackaton.foodforall.dto;
 
-public class feed {
+public class Feed {
 
-	private String id;
 	private String name;
 	private String type;
 	private String count;
 	private String status;
 	private String donor;
 
-	public feed(String id, String name, String type, String count, String status, String donor) {
+	public Feed(String name, String type, String count, String status, String donor) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.count = count;
 		this.status = status;
 		this.donor = donor;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getName() {

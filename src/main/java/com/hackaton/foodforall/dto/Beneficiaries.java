@@ -1,17 +1,17 @@
 package com.hackaton.foodforall.dto;
 
-public class Children {
+public class Beneficiaries {
 
-	private String id;
+	private String identify;
 	private String name;
 	private String age;
 	private String email;
 	private String phone;
 	private String community;
 
-	public Children(String id, String name, String age, String email, String phone, String community) {
+	public Beneficiaries(String identify, String name, String age, String email, String phone, String community) {
 		super();
-		this.id = id;
+		this.identify = identify;
 		this.name = name;
 		this.age = age;
 		this.email = email;
@@ -20,11 +20,11 @@ public class Children {
 	}
 
 	public String getId() {
-		return id;
+		return identify;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.identify = id;
 	}
 
 	public String getName() {
