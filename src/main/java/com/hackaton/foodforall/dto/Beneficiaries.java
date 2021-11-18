@@ -4,67 +4,49 @@ public class Beneficiaries {
 
 	private String identify;
 	private String name;
-	private String age;
+	private int age;
+	private int strat;
 	private String email;
 	private String phone;
-	private int strat;
-
-	public Beneficiaries(String identify, String name, String age, String email, String phone, int strat) {
+	private int community;
+	
+	public Beneficiaries(String identify, String name, int age, int strat, 
+			String email, String phone, int community) {
 		super();
 		this.identify = identify;
 		this.name = name;
 		this.age = age;
+		this.strat = strat;
 		this.email = email;
 		this.phone = phone;
-		this.strat = strat;
+		this.community = community;
 	}
 
-	public String getId() {
+	public String getIdentify() {
 		return identify;
-	}
-
-	public void setId(String id) {
-		this.identify = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
+	public int getStrat() {
+		return strat;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public int getCommunity() {
-		return strat;
+		return community;
 	}
-
-	public void setCommunity(int strat) {
-		this.strat = strat;
-	}
-
 }

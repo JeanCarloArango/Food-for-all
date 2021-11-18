@@ -1,11 +1,9 @@
 package com.hackaton.foodforall;
 
 import java.util.ArrayList;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.hackaton.foodforall.dao.FeedDAO;
-import com.hackaton.foodforall.dto.Beneficiaries;
-import com.hackaton.foodforall.dto.Feed;
+import org.springframework.web.bind.annotation.*;
+import com.hackaton.foodforall.dao.*;
+import com.hackaton.foodforall.dto.*;
 
 @RestController
 public class FoodforAllController {

@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `foodForAll`.`beneficiaries` (
   `dni` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `age` INT NOT NULL,
-  `stratus` INT NOT NULL,
+  `status` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `phone` VARCHAR(45) NULL,
   `community_id` INT NOT NULL,
