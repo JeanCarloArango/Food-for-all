@@ -7,16 +7,16 @@ public class Beneficiaries {
 	private String age;
 	private String email;
 	private String phone;
-	private String community;
+	private int strat;
 
-	public Beneficiaries(String identify, String name, String age, String email, String phone, String community) {
+	public Beneficiaries(String identify, String name, String age, String email, String phone, int strat) {
 		super();
 		this.identify = identify;
 		this.name = name;
 		this.age = age;
 		this.email = email;
 		this.phone = phone;
-		this.community = community;
+		this.strat = strat;
 	}
 
 	public String getId() {
@@ -59,12 +59,12 @@ public class Beneficiaries {
 		this.phone = phone;
 	}
 
-	public String getCommunity() {
-		return community;
+	public int getCommunity() {
+		return strat;
 	}
 
-	public void setCommunity(String community) {
-		this.community = community;
+	public void setCommunity(int strat) {
+		this.strat = strat;
 	}
 
 }

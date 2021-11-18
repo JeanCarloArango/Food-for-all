@@ -24,7 +24,7 @@ a {
 	padding-block: 1em;
 }
 
-a:hover {
+a:hover, .active {
 	color: #FFF;
 	background: #000;
 }
