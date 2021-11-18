@@ -15,10 +15,24 @@ public class FoodforAllController {
 	}
 	
 	@RequestMapping("/createBeneficed")
-	public String InsertarUsuario(Beneficiaries ben) {
+	public String InsertBeneficiare(Beneficiaries ben) {
 		BeneficiariesDAO dao = new BeneficiariesDAO();
 		dao.createBeneficiaries(ben);
 		return "Microservice of insert a beneficiary";
+	}
+	
+	@RequestMapping("/createDonor")
+	public String InsertDonor(Donor don) {
+		DonorDAO dao = new DonorDAO();
+		dao.createDonor(don);
+		return "Microservice of insert a donor";
+	}
+	
+	@RequestMapping("/createFeed")
+	public String InsertFeed(Feed fee) {
+		FeedDAO dao = new FeedDAO();
+		dao.createFeed(fee);
+		return "Microservice of insert the feed";
 	}
 	
 }
