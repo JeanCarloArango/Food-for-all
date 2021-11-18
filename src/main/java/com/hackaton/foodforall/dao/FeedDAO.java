@@ -17,7 +17,7 @@ public class FeedDAO {
 		ArrayList<Feed> feeds = new ArrayList<Feed>();
 
 		try {
-			sql = "SELECT * FROM feed ";
+			sql = "SELECT * FROM feed;";
 			sentence = this.conn.pStm(sql);
 			
 			ResultSet res = sentence.executeQuery();
