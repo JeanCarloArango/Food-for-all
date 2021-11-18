@@ -12,7 +12,8 @@ public class FeedDAO {
 	private PreparedStatement sentence;
 	String sql;
 	/**
-	 * */
+	 
+	 **/
 	public ArrayList<Feed> feedConsult() {
 		ArrayList<Feed> feeds = new ArrayList<Feed>();
 
