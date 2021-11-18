@@ -1,24 +1,26 @@
 package com.hackaton.foodforall.dao;
 
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import com.hackaton.foodforall.dto.Feed;
 
 public class FeedDAO {
-
+	
+	private ConnectionDB conn;
+	private PreparedStatement sentence;
+	String sql;
+	/**
+	 * */
 	public ArrayList<Feed> feedConsult() {
 		ArrayList<Feed> feeds = new ArrayList<Feed>();
-		ConexionBD conex = new ConexionBD();
-
-		String sql = "SELECT * FROM feed ";
 
 		try {
-			Statement consulta = conex.getConexionBD().createStatement();
-			ResultSet res = consulta.executeQuery(sql);
+			sql = "SELECT * FROM feed ";
+			sentence = this.conn.pStm(sql);
+			
+			ResultSet res = sentence.executeQuery();
 
 			while (res.next()) {
 				Feed fe = new Feed(res.getString("name"), res.getString("type"), res.getString("count"),
@@ -26,8 +28,7 @@ public class FeedDAO {
 				feeds.add(fe);
 			}
 			res.close();
-			consulta.close();
-//			conex.desconectar();
+			conn.disconnect();
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "no se pudo consultar la come come" + e);
