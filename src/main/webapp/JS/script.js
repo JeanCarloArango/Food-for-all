@@ -139,7 +139,7 @@ function donate() {
 
     const http = new XMLHttpRequest();
 
-    http.open('POST', '/showFood', true);
+    http.open('POST', '/createDonation', true);
 
     alert(http.responseText);
 
