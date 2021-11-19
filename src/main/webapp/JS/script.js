@@ -73,6 +73,12 @@ function valDonate() {
     const community = document.getElementById('txtCom');
     let valType = type.options[type.selectedIndex];
     let valCom = community.options[type.selectedIndex];
+    const donationName = document.getElementById('txtDonation');
+    const donationCant = document.getElementById('txtCant');
+    const prType = document.getElementById('txtPr');
+    let valPrType = prType.options[prType.selectedIndex];
+    const prStatus = document.getElementById('txtPr');
+    let valPrStatus = prStatus.options[prStatus.selectedIndex];
 
     if(valType.value == 'em') {
         alert('Tipo de donador no es valido');
@@ -89,6 +95,18 @@ function valDonate() {
     } else if(valCom.value == 'em') {
         alert('Comunidad no es valida');
         return false;
+    } else if(donationName.value.trim().length == 0) {
+        alert('Debes donar algo');
+        return false;
+    } else if(donationCant.value.trim() < 1) {
+        alert('Cantidad invalida');
+        return false;
+    } else if(valPrType.value == 'em') {
+        alert('Tipo de producto no valido');
+        return false;
+    } else if(valPrStatus.value == 'em') {
+        alert('Estado de producto no valido');
+        return false;
     } else {
         return true;
     }
@@ -103,15 +121,21 @@ function donate() {
     /**
      * Donor data variables
      */
-    const type = document.getElementById('txtDonor');
-    const name = document.getElementById('txtName').value.trim();
-    const email = document.getElementById('txtEmail').value.trim();
-    const phone = document.getElementById('txtPhone').value.trim();
-    const community = document.getElementById('txtCom');
-    let valType = type.options[type.selectedIndex];
-    let valCom = community.options[type.selectedIndex];
+     const type = document.getElementById('txtDonor');
+     let valType = type.options[type.selectedIndex];
+     const name = document.getElementById('txtName').value.trim();
+     const email = document.getElementById('txtEmail').value.trim();
+     const phone = document.getElementById('txtPhone').value.trim();
+     const community = document.getElementById('txtCom');
+     let valCom = community.options[type.selectedIndex];
+     const donationName = document.getElementById('txtDonation').value.trim();
+     const donationCant = document.getElementById('txtCant').value.trim();
+     const prType = document.getElementById('txtPr');
+     let valPrType = prType.options[prType.selectedIndex];
+     const prStatus = document.getElementById('txtPr');
+     let valPrStatus = prStatus.options[prStatus.selectedIndex];
 
-    let params = `name=${name}&email=${email}&phone=${phone}&community=${valCom.value}&type=${valType.text}`;
+    let params = `nameD=${name}&emailD=${email}&phoneD=${phone}&type=${valType.text}&community=${valCom.text}&nameF=${donationName}&typeF=${valPrType.text}&countF=${donationCant}&statusF${valPrStatus.text}`;
 
     const http = new XMLHttpRequest();
 
@@ -119,6 +143,6 @@ function donate() {
 
     alert(http.responseText);
 
-    http.send
+    http.send(params);
 
 }

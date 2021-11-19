@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="col-2">
-				<input type="text" placeholder="Que vas a donar?" class="textIn" id="txtPhone">
+				<input type="text" placeholder="Que vas a donar?" class="textIn" id="txtDonation">
 				<br><br>
 				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo
 					mercado pones 1</span>
@@ -47,18 +47,18 @@
 				<label for="txtPr" class="lbl" id="lblTPr">Tipo Producto</label>
 				<br>
 				<select class="comboBox" id="txtPr">
-					<option class="selOp">-- Selecciona Tipo de Producto --</option>
-					<option class="selOp">Peresedero</option>
-					<option class="selOp">No Peresedero</option>
+					<option class="selOp" value="em">-- Selecciona Tipo de Producto --</option>
+					<option class="selOp" value="per">Peresedero</option>
+					<option class="selOp" value="nper">No Peresedero</option>
 				</select>
 				<br><br>
 				<label for="txtStPr" class="lbl" id="lblPr">Estado Producto</label>
 				<br>
 				<select class="comboBox" id="txtStPr">
-					<option class="selOp">-- Selecciona Estado del Producto --</option>
-					<option class="selOp">Proximo a Vencer</option>
-					<option class="selOp">En Fecha</option>
-					<option class="selOp">En Descomposicion</option>
+					<option class="selOp" value="em">-- Selecciona Estado del Producto --</option>
+					<option class="selOp" value="pv">Proximo a Vencer</option>
+					<option class="selOp" value="ef">En Fecha</option>
+					<option class="selOp" value="ed">En Descomposicion</option>
 				</select>
 			</div>
 			<br><br>
