@@ -8,9 +8,9 @@
 
 	<form class="form" id="don-form">
 		
-		<div class="form-cont">
+		<div class="form-grid">
 			
-			<div class="col">
+			<div class="col-1">
 				
 				<label for="txtDonor" class="lbl" id="lblDes">Tipo Donador</label> 
 				<br>
@@ -26,12 +26,15 @@
 				<br><br>
 				<input type="text" placeholder="Telefono" class="textIn" id="txtPhone">
 				<br><br>
-				<input type="text" placeholder="Direccion" class="textIn" id="txtAddress">
-				<br><br>
+				<input type="text" placeholder="Direccion" class="textIn" id="txtAddress"> 
+				
+			</div>
+
+			<div class="col-2">
 				<input type="text" placeholder="Que vas a donar?" class="textIn" id="txtPhone">
-				<br>
-				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo mercado pones 1</span>
 				<br><br>
+				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo mercado pones 1</span>
+				<br>
 				<input type="number" placeholder="Cantidad" class="textIn" id="txtCant">
 				<br><br>
 				<label for="txtPr" class="lbl" id="lblDes">Tipo Producto</label> 
@@ -50,12 +53,11 @@
 					<option class="selOp">En Fecha</option>
 					<option class="selOp">En Descomposicion</option>
 				</select> 
-				<br><br>
-				<input type="button" value="Donar" class="btn" id="btnDonate"> 
-				
 			</div>
-			
+			<br><br>	
 		</div>
+
+		<input type="button" value="Donar" class="btn" id="btnDonate">
 		
 	</form>
 
