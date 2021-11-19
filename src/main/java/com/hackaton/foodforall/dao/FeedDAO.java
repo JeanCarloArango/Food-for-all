@@ -16,6 +16,8 @@ public class FeedDAO {
 	 
 	 **/
 	public ArrayList<Feed> feedConsult() {
+
+		conn = new ConnectionDB();
 		ArrayList<Feed> feeds = new ArrayList<Feed>();
 
 		try {
@@ -25,8 +27,8 @@ public class FeedDAO {
 			ResultSet res = sentence.executeQuery();
 
 			while (res.next()) {
-				Feed fe = new Feed(res.getString("name"), res.getString("type"), res.getString("count"),
-						res.getString("status"), res.getInt("donor"));
+				Feed fe = new Feed(res.getString("name"), res.getString("type"), res.getString("cantidad"),
+						res.getString("status"), res.getInt("donor_id"));
 				feeds.add(fe);
 			}
 			res.close();

@@ -38,7 +38,7 @@ public class FoodforAllController {
 	@RequestMapping("/showCommunity")
 	public ArrayList<Community> SearchCommunity() {
 		comm = new CommunityDAO();
-		System.out.println(comm.searchCommunity());
+		// System.out.println(comm.searchCommunity());
 		return comm.searchCommunity();
 	}
 }
