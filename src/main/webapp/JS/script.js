@@ -10,9 +10,9 @@ const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
 const XHTTP = new XMLHttpRequest();
 
-function appendCom () {
+function appendCom() {
     XHTTP.open('GET', '/showCommunity', true);
-    createSelect(XHTTP.responseText); 
+    createSelect(XHTTP.responseText);
     XHTTP.send();
 }
 
@@ -28,7 +28,6 @@ links.forEach((link) => {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
-                    appendCom();
                     donate();
                 });
             }, 500);
@@ -43,6 +42,7 @@ links.forEach((link) => {
         e.target.classList.add('active');
         formXHTTP.open('GET', id + '.html', true);
         formXHTTP.send();
+        appendCom();
     });
 });
 
@@ -61,7 +61,7 @@ function createSelect(json_res) {
         [{"comId": 12, "comName": "Bosa"}]
         <option value="12">Bosa</option>
    */
-    for(let i = 0; i < json.length; i++) {
+    for (let i = 0; i < json.length; i++) {
         let text = document.createTextNode(json.comminityName);
         option = document.createElement('option');
         option.setAttribute('value', json.communityId);
@@ -154,7 +154,7 @@ function donate() {
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
     const http = new XMLHttpRequest();
 
-    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' /*+valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
+    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' /*+valCom.text*/ + '&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
     http.open('POST', '/createDonation', true);
 
