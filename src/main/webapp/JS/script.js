@@ -11,7 +11,7 @@ const formXHTTP = new XMLHttpRequest();
 
 function appendCom () {
     formXHTTP.open('GET', 'showCommunity', true);
-    document.getElementById('txtCom').innerHTML += createSelect(formXHTTP.responseText); 
+    createSelect(formXHTTP.responseText); 
     formXHTTP.send();
 }
 
@@ -65,9 +65,8 @@ function createSelect(json_res) {
         option = document.createElement('option');
         option.setAttribute('value', json.communityId);
         option.appendChild(text);
+        document.getElementById('txtCom').innerHTML += option;
     }
-
-    return option;
 
 }
 
