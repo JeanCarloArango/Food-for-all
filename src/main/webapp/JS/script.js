@@ -8,11 +8,12 @@
 const links = document.querySelectorAll('#menu a');
 const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
+const XHTTP = new XMLHttpRequest();
 
 function appendCom () {
-    formXHTTP.open('GET', 'showCommunity', true);
-    createSelect(formXHTTP.responseText); 
-    formXHTTP.send();
+    XHTTP.open('GET', '/showCommunity', true);
+    createSelect(XHTTP.responseText); 
+    XHTTP.send();
 }
 
 /**
