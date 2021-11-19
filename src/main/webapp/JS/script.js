@@ -11,9 +11,9 @@ const formXHTTP = new XMLHttpRequest();
 
 function appendCom() {
     const XHTTP = new XMLHttpRequest();
-    XHTTP.open('POST', '/showCommunity', true);
+    XHTTP.open('POST', '/showCommunity', false);
+    createSelect(XHTTP.responseText);
     XHTTP.send();
-    alert(XHTTP.responseText);
 }
 
 /**
@@ -29,8 +29,8 @@ links.forEach((link) => {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
-                    // donate();
-                    appendCom();
+                    donate();
+                    // appendCom();
                 });
             }, 500);
         }
