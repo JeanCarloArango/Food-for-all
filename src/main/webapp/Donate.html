@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Donacion</title>
+	<meta charset="ISO-8859-1">
+	<title>Donacion</title>
 </head>
+
 <body>
 
 	<form class="form" id="don-form">
-		
+
 		<div class="form-grid">
-			
+
 			<div class="col-1">
-				
-				<label for="txtDonor" class="lbl" id="lblDes">Tipo Donador</label> 
+
+				<label for="txtDonor" class="lbl" id="lblDes">Tipo Donador</label>
 				<br>
 				<select class="comboBox" id="txtDonor">
-					<option class="selOp">-- Selecciona Tipo de Donador --</option>
-					<option class="selOp">Persona</option>
-					<option class="selOp">Organizacion</option>
-				</select> 
+					<option class="selOp" value="em">-- Selecciona Tipo de Donador --</option>
+					<option class="selOp" value="pr">Persona</option>
+					<option class="selOp" value="or">Organizacion</option>
+				</select>
 				<br><br>
 				<input type="text" placeholder="Nombre" class="textIn" id="txtName">
 				<br><br>
@@ -26,40 +28,46 @@
 				<br><br>
 				<input type="text" placeholder="Telefono" class="textIn" id="txtPhone">
 				<br><br>
-				<input type="text" placeholder="Direccion" class="textIn" id="txtAddress"> 
-				
+				<label for="txtCom" class="lbl" id="lblCom">Comunidad</label>
+				<br>
+				<select class="comboBox" id="txtCom">
+					<option class="selOp" value="em">-- Selecciona la comunidad en la que vives --</option>
+				</select>
+
 			</div>
 
 			<div class="col-2">
 				<input type="text" placeholder="Que vas a donar?" class="textIn" id="txtPhone">
 				<br><br>
-				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo mercado pones 1</span>
+				<span class="tip">La cantidad puede ser el peso (si son productos por separado) o si es en estilo
+					mercado pones 1</span>
 				<br>
 				<input type="number" placeholder="Cantidad" class="textIn" id="txtCant">
 				<br><br>
-				<label for="txtPr" class="lbl" id="lblDes">Tipo Producto</label> 
+				<label for="txtPr" class="lbl" id="lblTPr">Tipo Producto</label>
 				<br>
 				<select class="comboBox" id="txtPr">
 					<option class="selOp">-- Selecciona Tipo de Producto --</option>
 					<option class="selOp">Peresedero</option>
 					<option class="selOp">No Peresedero</option>
-				</select> 
+				</select>
 				<br><br>
-				<label for="txtStPr" class="lbl" id="lblDes">Estado Producto</label> 
+				<label for="txtStPr" class="lbl" id="lblPr">Estado Producto</label>
 				<br>
 				<select class="comboBox" id="txtStPr">
 					<option class="selOp">-- Selecciona Estado del Producto --</option>
 					<option class="selOp">Proximo a Vencer</option>
 					<option class="selOp">En Fecha</option>
 					<option class="selOp">En Descomposicion</option>
-				</select> 
+				</select>
 			</div>
-			<br><br>	
+			<br><br>
 		</div>
 
 		<input type="button" value="Donar" class="btn" id="btnDonate">
-		
+
 	</form>
 
 </body>
+
 </html>

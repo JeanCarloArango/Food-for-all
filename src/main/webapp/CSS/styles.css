@@ -91,4 +91,5 @@ a:hover, .active {
 	background-color: #000;
 	color: #fff;
 	font-size: 1.2em;
+	cursor: pointer;
 }
