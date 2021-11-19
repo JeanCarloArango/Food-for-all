@@ -9,6 +9,11 @@ const links = document.querySelectorAll('#menu a');
 const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
 
+(function () {
+    formXHTTP.open('POST', 'showCommunity', true);
+    createSelect(formXHTTP.responseText);
+}())
+
 /**
  * Method that catch the id of each element 
  * and charges the content of main container.
@@ -21,7 +26,7 @@ links.forEach((link) => {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
-                    donate()
+                    donate();
                 });
             }, 500);
         }
@@ -47,9 +52,20 @@ formXHTTP.onload = function () {
  */
 function createSelect(json_res) {
 
+    let option;
     const json = JSON.parse(json_res);
+    /*
+        [{"comId": 12, "comName": "Bosa"}]
+        <option value="12">Bosa</option>
+   */
+    for(let i = 0; i < json.length; i++) {
+        let text = document.createTextNode(json.comminityName);
+        option = document.createElement('option');
+        option.setAttribute('value', json.communityId);
+        option.appendChild(text);
+    }
 
-
+    return option;
 
 }
 
@@ -136,7 +152,7 @@ function donate() {
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
     const http = new XMLHttpRequest();
 
-    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' +/*valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF' + valPrStatus.text;
+    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' +/*valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
     http.open('POST', '/createDonation', true);
 
