@@ -35,7 +35,7 @@ public class FoodforAllController {
 		return "Microservice has insert a donation";
 	}
 
-	@RequestMapping("/ShowCommunity")
+	@RequestMapping("/showCommunity")
 	public ArrayList<Community> SearchCommunity() {
 		comm = new CommunityDAO();
 		return comm.searchCommunity();

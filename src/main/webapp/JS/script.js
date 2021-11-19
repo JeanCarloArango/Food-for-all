@@ -8,9 +8,9 @@
 const links = document.querySelectorAll('#menu a');
 const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
-const XHTTP = new XMLHttpRequest();
 
 function appendCom() {
+    const XHTTP = new XMLHttpRequest();
     XHTTP.open('POST', '/showCommunity', true);
     XHTTP.send();
     alert(XHTTP.responseText);
@@ -29,7 +29,8 @@ links.forEach((link) => {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
-                    donate();
+                    // donate();
+                    appendCom();
                 });
             }, 500);
         }
