@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-import com.hackaton.foodforall.dto.Beneficiaries;
-import com.hackaton.foodforall.dto.Feed;
+import com.hackaton.foodforall.dto.*;;
 
 public class FeedDAO {
 	
@@ -39,21 +38,23 @@ public class FeedDAO {
 		return feeds;
 	}
 	
-	public Boolean createFeed(Feed feed) {
+	public Boolean createFeed(Donation feed) {
 		conn = new ConnectionDB();
 		try {
+			int id = donorID(feed.getEmailD());
 			sql = "INSERT INTO FEED (NAME, TYPE, CANTIDAD, STATUS, DONOR_ID) "
 					+ "VALUES (?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
-			sentence.setString(1, feed.getName());
-			sentence.setString(2, feed.getType());
-			sentence.setString(3, feed.getCount());
-			sentence.setString(4, feed.getStatus());
-			sentence.setInt(5, feed.getDonor());
+			sentence.setString(1, feed.getNameF());
+			sentence.setString(2, feed.getTypeF());
+			sentence.setString(3, feed.getCountF());
+			sentence.setString(4, feed.getStatusF());
+			sentence.setInt(5, id);
 			
 			Boolean res = false;
 			if (!sentence.execute()) {
 				res = true;
+				System.out.println("Se guardo");
 			}
 			conn.disconnect();
 			sentence.close();
@@ -64,5 +65,24 @@ public class FeedDAO {
 			return false;
 		}
 	}
+	
+	public int donorID (String email) {
+		conn = new ConnectionDB();
+		int idDonor = 0;
+		try {
+			sql = "SELECT * FROM DONOR WHERE EMAIL=?;";
+			sentence = this.conn.pStm(sql);
+			sentence.setString(1, email);
+			
+			ResultSet res = sentence.executeQuery();
+			
+			while (res.next()) {
+				idDonor = res.getInt("ID");
+			}
 
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "no se pudo consultar la come come" + e);
+		}
+		return idDonor; 
+	}
 }

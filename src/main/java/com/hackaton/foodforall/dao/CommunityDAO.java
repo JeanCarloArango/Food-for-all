@@ -9,7 +9,7 @@ public class CommunityDAO {
 	private PreparedStatement sentence;
 	private String sql;
 	
-	public ArrayList<Community> searchProducts() {
+	public ArrayList<Community> searchCommunity() {
 		conn = new ConnectionDB();
 		ArrayList<Community> coms = new ArrayList<Community>();
 
@@ -20,7 +20,7 @@ public class CommunityDAO {
 			ResultSet communityFound = sentence.executeQuery();
 			
 			while (communityFound.next()) {
-				Community com = new Community(communityFound.getString("name"));
+				Community com = new Community(communityFound.getInt("id"), communityFound.getString("name"));
 				coms.add(com);
 			}
 			conn.disconnect();

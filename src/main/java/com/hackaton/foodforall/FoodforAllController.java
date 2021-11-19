@@ -7,32 +7,37 @@ import com.hackaton.foodforall.dto.*;
 
 @RestController
 public class FoodforAllController {
+	
+	FeedDAO feed;
+	BeneficiariesDAO bene;
+	DonorDAO donor;
+	CommunityDAO comm;
 
 	@RequestMapping("/showFeed")
 	public ArrayList<Feed> feedConsult() {
-		FeedDAO dao = new FeedDAO();
-		return dao.feedConsult();
+		feed = new FeedDAO();
+		return feed.feedConsult();
 	}
 
 	@RequestMapping("/createBeneficed")
 	public String InsertBeneficiare(Beneficiaries ben) {
-		BeneficiariesDAO dao = new BeneficiariesDAO();
-		dao.createBeneficiaries(ben);
+		bene = new BeneficiariesDAO();
+		bene.createBeneficiaries(ben);
 		return "Microservice has insert a beneficiary";
 	}
 
-	@RequestMapping("/createDonor")
-	public String InsertDonor(Donor don) {
-		DonorDAO dao = new DonorDAO();
-		dao.createDonor(don);
-		return "Microservice has insert a donor";
+	@RequestMapping("/createDonation")
+	public String InsertDonor(Donation don) {
+		donor = new DonorDAO();
+		feed = new FeedDAO();
+		donor.createDonationF(don);
+		feed.createFeed(don);
+		return "Microservice has insert a donation";
 	}
 
-	@RequestMapping("/createFeed")
-	public String InsertFood(Feed fee) {
-		FeedDAO dao = new FeedDAO();
-		dao.createFeed(fee);
-		return "Microservice has insert the food";
+	@RequestMapping("/SearchCommunity")
+	public ArrayList<Community> SearchCommunity() {
+		comm = new CommunityDAO();
+		return comm.searchCommunity();
 	}
-
 }
