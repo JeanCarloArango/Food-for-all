@@ -121,19 +121,19 @@ function donate() {
     /**
      * Donor data variables
      */
-     const type = document.getElementById('txtDonor');
-     let valType = type.options[type.selectedIndex];
-     const name = document.getElementById('txtName').value.trim();
-     const email = document.getElementById('txtEmail').value.trim();
-     const phone = document.getElementById('txtPhone').value.trim();
-     const community = document.getElementById('txtCom');
-     let valCom = community.options[type.selectedIndex];
-     const donationName = document.getElementById('txtDonation').value.trim();
-     const donationCant = document.getElementById('txtCant').value.trim();
-     const prType = document.getElementById('txtPr');
-     let valPrType = prType.options[prType.selectedIndex];
-     const prStatus = document.getElementById('txtPr');
-     let valPrStatus = prStatus.options[prStatus.selectedIndex];
+    const type = document.getElementById('txtDonor');
+    let valType = type.options[type.selectedIndex];
+    const name = document.getElementById('txtName').value.trim();
+    const email = document.getElementById('txtEmail').value.trim();
+    const phone = document.getElementById('txtPhone').value.trim();
+    const community = document.getElementById('txtCom');
+    let valCom = community.options[type.selectedIndex];
+    const donationName = document.getElementById('txtDonation').value.trim();
+    const donationCant = document.getElementById('txtCant').value.trim();
+    const prType = document.getElementById('txtPr');
+    let valPrType = prType.options[prType.selectedIndex];
+    const prStatus = document.getElementById('txtPr');
+    let valPrStatus = prStatus.options[prStatus.selectedIndex];
 
     let params = 'nameD='+name+'&emailD='+email+'&phoneD='+phone+'&type='+valType.text+'&community='+valCom.text+'&nameF='+donationName+'&typeF='+valPrType.text+'&countF='+donationCant+'&statusF'+valPrStatus.text;
 
