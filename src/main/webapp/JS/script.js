@@ -49,17 +49,7 @@ function createSelect(json_res) {
 
     const json = JSON.parse(json_res);
 
-    let keyName = [];
 
-    for(let j = 0; j < json.length; j++) {
-        for(let key in json[j]) {
-            if(keyName.indexOf(key) === -1) {
-                keyName.push(key);
-            }
-        }
-    }
-
-    alert(keyName);
 
 }
 
@@ -90,31 +80,31 @@ function valDonate() {
     const prStatus = document.getElementById('txtPr');
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
 
-    if(valType.value == 'em') {
+    if (valType.value == 'em') {
         alert('Tipo de donador no es valido');
         return false;
-    } else if(name.value.trim().length == 0) {
+    } else if (name.value.trim().length == 0) {
         alert('Nombre no puede estar vacio');
         return false;
-    } else if(email.value.trim().length == 0) {
+    } else if (email.value.trim().length == 0) {
         alert('E-mail no puede estar vacio');
         return false;
-    } else if(phone.value.trim().length == 0) {
+    } else if (phone.value.trim().length == 0) {
         alert('Telefono no puede estar vacio');
         return false;
     } /*else if(valCom.value == 'em') {
         alert('Comunidad no es valida');
         return false;
-    }*/ else if(donationName.value.trim().length == 0) {
+    }*/ else if (donationName.value.trim().length == 0) {
         alert('Debes donar algo');
         return false;
-    } else if(donationCant.value.trim() < 1) {
+    } else if (donationCant.value.trim() < 1) {
         alert('Cantidad invalida');
         return false;
-    } else if(valPrType.value == 'em') {
+    } else if (valPrType.value == 'em') {
         alert('Tipo de producto no valido');
         return false;
-    } else if(valPrStatus.value == 'em') {
+    } else if (valPrStatus.value == 'em') {
         alert('Estado de producto no valido');
         return false;
     } else {
@@ -144,12 +134,22 @@ function donate() {
     let valPrType = prType.options[prType.selectedIndex];
     const prStatus = document.getElementById('txtStPr');
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
-
-    let params = 'nameD='+name+'&emailD='+email+'&phoneD='+phone+'&type='+valType.text+'&community=11'+/*valCom.text*/+'&nameF='+donationName+'&typeF='+valPrType.text+'&countF='+donationCant+'&statusF'+valPrStatus.text;
-
     const http = new XMLHttpRequest();
 
+    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' +/*valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF' + valPrStatus.text;
+
     http.open('POST', '/createDonation', true);
+
+    http.setRequestHeader('Content-type',
+        'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function () {//Call a function when the state changes.
+        if (http.readyState == 4 && http.status == 200) {
+            alert("creado");
+        } else {
+            alert('no creado');
+        }
+    }
 
     http.send(params);
 
