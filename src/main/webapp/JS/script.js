@@ -10,8 +10,9 @@ const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
 
 function appendCom () {
-    formXHTTP.open('POST', 'showCommunity', true);
+    formXHTTP.open('GET', 'showCommunity', true);
     document.getElementById('txtCom').innerHTML += createSelect(formXHTTP.responseText); 
+    formXHTTP.send();
 }
 
 /**
