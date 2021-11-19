@@ -9,10 +9,10 @@ const links = document.querySelectorAll('#menu a');
 const mainCont = document.getElementById('mainCont');
 const formXHTTP = new XMLHttpRequest();
 
-(function () {
+function appendCom () {
     formXHTTP.open('POST', 'showCommunity', true);
-    createSelect(formXHTTP.responseText);
-}())
+    document.getElementById('txtCom').appendChild(createSelect(formXHTTP.responseText)); 
+}
 
 /**
  * Method that catch the id of each element 
@@ -26,6 +26,7 @@ links.forEach((link) => {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
+                    appendCom();
                     donate();
                 });
             }, 500);
@@ -152,7 +153,7 @@ function donate() {
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
     const http = new XMLHttpRequest();
 
-    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' +/*valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
+    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' /*+valCom.text*/ +'&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
     http.open('POST', '/createDonation', true);
 
