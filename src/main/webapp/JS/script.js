@@ -135,7 +135,7 @@ function donate() {
      const prStatus = document.getElementById('txtPr');
      let valPrStatus = prStatus.options[prStatus.selectedIndex];
 
-    let params = `nameD=${name}&emailD=${email}&phoneD=${phone}&type=${valType.text}&community=${valCom.text}&nameF=${donationName}&typeF=${valPrType.text}&countF=${donationCant}&statusF${valPrStatus.text}`;
+    let params = 'nameD='+name+'&emailD='+email+'&phoneD='+phone+'&type='+valType.text+'&community='+valCom.text+'&nameF='+donationName+'&typeF='+valPrType.text+'&countF='+donationCant+'&statusF'+valPrStatus.text;
 
     const http = new XMLHttpRequest();
 
