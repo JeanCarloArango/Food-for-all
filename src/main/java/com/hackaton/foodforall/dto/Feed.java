@@ -6,9 +6,9 @@ public class Feed {
 	private String type;
 	private String count;
 	private String status;
-	private String donor;
+	private int donor;
 
-	public Feed(String name, String type, String count, String status, String donor) {
+	public Feed(String name, String type, String count, String status, int donor) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -21,40 +21,20 @@ public class Feed {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getType() {
 		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getCount() {
 		return count;
 	}
 
-	public void setCount(String count) {
-		this.count = count;
-	}
-
 	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getDonor() {
+	public int getDonor() {
 		return donor;
-	}
-
-	public void setDonor(String donor) {
-		this.donor = donor;
 	}
 
 }

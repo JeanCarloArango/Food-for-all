@@ -12,7 +12,6 @@ public class BeneficiariesDAO {
 	public Boolean createBeneficiaries(Beneficiaries ben) {
 		conn = new ConnectionDB();
 		try {
-			//age int, status int, community int
 			sql = "INSERT INTO BENEFICIARIES (DNI, NAME, AGE, STATUS, EMAIL, PHONE,"
 					+ " COMMUNITY_ID) VALUES (?,?,?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
