@@ -8,7 +8,7 @@ import com.hackaton.foodforall.dto.*;
 @RestController
 public class FoodforAllController {
 
-	@RequestMapping("/showFeedd")
+	@RequestMapping("/showFeed")
 	public ArrayList<Feed> feedConsult() {
 		FeedDAO dao = new FeedDAO();
 		return dao.feedConsult();
