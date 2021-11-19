@@ -12,9 +12,8 @@ const formXHTTP = new XMLHttpRequest();
 function appendCom() {
     const XHTTP = new XMLHttpRequest();
     XHTTP.open('POST', '/showCommunity', false);
-    alert(XHTTP.responseText);
-    createSelect(XHTTP.responseText);
     XHTTP.send();
+    createSelect(XHTTP.responseText);
 }
 
 /**
@@ -56,7 +55,7 @@ formXHTTP.onload = function () {
  * Function for request data from BD and show in the UI
  */
 function createSelect(json_res) {
-
+	console.log(json_res)
     let option;
     const json = JSON.parse(json_res);
     /*
@@ -64,11 +63,12 @@ function createSelect(json_res) {
         <option value="12">Bosa</option>
    */
     for (let i = 0; i < json.length; i++) {
-        let text = document.createTextNode(json.comminityName);
-        option = document.createElement('option');
+        let text = document.createTextNode(json.communityId);
+		console.log(text);
+        /*option = document.createElement('option');
         option.setAttribute('value', json.communityId);
         option.appendChild(text);
-        document.getElementById('txtCom').innerHTML += option;
+        document.getElementById('txtCom').appendChild(option);*/
     }
 
 }
