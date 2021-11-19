@@ -22,6 +22,7 @@ function appendCom() {
  */
 links.forEach((link) => {
     link.addEventListener('click', function (e) {
+        appendCom();
         e.preventDefault();
         let id = e.target.getAttribute("id");
         if (id == 'Donate') {
@@ -42,7 +43,6 @@ links.forEach((link) => {
         e.target.classList.add('active');
         formXHTTP.open('GET', id + '.html', true);
         formXHTTP.send();
-        appendCom();
     });
 });
 
