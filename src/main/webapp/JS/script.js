@@ -11,9 +11,9 @@ const formXHTTP = new XMLHttpRequest();
 const XHTTP = new XMLHttpRequest();
 
 function appendCom() {
-    XHTTP.open('GET', '/showCommunity', true);
-    createSelect(XHTTP.responseText);
+    XHTTP.open('POST', '/showCommunity', true);
     XHTTP.send();
+    alert(XHTTP.responseText);
 }
 
 /**
