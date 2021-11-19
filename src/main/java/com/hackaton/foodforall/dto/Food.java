@@ -1,6 +1,6 @@
 package com.hackaton.foodforall.dto;
 
-public class Feed {
+public class Food {
 
 	private String name;
 	private String type;
@@ -8,7 +8,7 @@ public class Feed {
 	private String status;
 	private String donor;
 
-	public Feed(String name, String type, String count, String status, String donor) {
+	public Food(String name, String type, String count, String status, String donor) {
 		super();
 		this.name = name;
 		this.type = type;
