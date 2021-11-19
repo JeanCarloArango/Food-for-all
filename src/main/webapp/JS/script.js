@@ -12,6 +12,7 @@ const formXHTTP = new XMLHttpRequest();
 function appendCom() {
     const XHTTP = new XMLHttpRequest();
     XHTTP.open('POST', '/showCommunity', false);
+    alert(XHTTP.responseText);
     createSelect(XHTTP.responseText);
     XHTTP.send();
 }
