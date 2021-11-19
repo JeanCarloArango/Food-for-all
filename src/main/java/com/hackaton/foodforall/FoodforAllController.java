@@ -8,10 +8,10 @@ import com.hackaton.foodforall.dto.*;
 @RestController
 public class FoodforAllController {
 
-	@RequestMapping("/showFood")
-	public ArrayList<Food> foodConsult() {
-		FoodDAO dao = new FoodDAO();
-		return dao.foodConsult();
+	@RequestMapping("/showFeedd")
+	public ArrayList<Feed> feedConsult() {
+		FeedDAO dao = new FeedDAO();
+		return dao.feedConsult();
 	}
 
 	@RequestMapping("/createBeneficed")
@@ -28,10 +28,10 @@ public class FoodforAllController {
 		return "Microservice has insert a donor";
 	}
 
-	@RequestMapping("/createFood")
-	public String InsertFood(Food foo) {
-		FoodDAO dao = new FoodDAO();
-		dao.createFood(foo);
+	@RequestMapping("/createFeed")
+	public String InsertFood(Feed fee) {
+		FeedDAO dao = new FeedDAO();
+		dao.createFeed(fee);
 		return "Microservice has insert the food";
 	}
 

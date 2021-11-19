@@ -36,9 +36,5 @@ public class FoodDAO {
 		}
 		return foods;
 	}
-	
-	public void createFood(Food food) {
-		
-	}
 
 }
