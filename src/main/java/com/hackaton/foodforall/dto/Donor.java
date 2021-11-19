@@ -2,17 +2,13 @@ package com.hackaton.foodforall.dto;
 
 public class Donor {
 
-	enum Edonor {
-		person, organization
-	}
-
 	private String name;
 	private String email;
 	private String phone;
 	private String community;
-	Edonor type;
+	private String type;
 
-	public Donor(String name, String email, String phone, String community, Edonor type) {
+	public Donor(String name, String email, String phone, String community, String type) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -53,12 +49,13 @@ public class Donor {
 		this.community = community;
 	}
 
-	public Edonor getTipo() {
+	public String getType() {
 		return type;
 	}
 
-	public void setTipo(Edonor tipo) {
-		this.type = tipo;
+	public void setType(String type) {
+		this.type = type;
 	}
+
 
 }

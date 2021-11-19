@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import com.hackaton.foodforall.dto.Feed;
+import com.hackaton.foodforall.dto.Food;
 
-public class FeedDAO {
+public class FoodDAO {
 	
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
@@ -14,19 +14,19 @@ public class FeedDAO {
 	/**
 	 
 	 **/
-	public ArrayList<Feed> feedConsult() {
-		ArrayList<Feed> feeds = new ArrayList<Feed>();
+	public ArrayList<Food> foodConsult() {
+		ArrayList<Food> foods = new ArrayList<Food>();
 
 		try {
-			sql = "SELECT * FROM feed;";
+			sql = "SELECT * FROM food;";
 			sentence = this.conn.pStm(sql);
 			
 			ResultSet res = sentence.executeQuery();
 
 			while (res.next()) {
-				Feed fe = new Feed(res.getString("name"), res.getString("type"), res.getString("count"),
+				Food fo = new Food(res.getString("name"), res.getString("type"), res.getString("count"),
 						res.getString("status"), res.getString("donor"));
-				feeds.add(fe);
+				foods.add(fo);
 			}
 			res.close();
 			conn.disconnect();
@@ -34,7 +34,7 @@ public class FeedDAO {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "no se pudo consultar la come come" + e);
 		}
-		return feeds;
+		return foods;
 	}
 
 }
