@@ -13,7 +13,14 @@ function appendCom() {
     const XHTTP = new XMLHttpRequest();
     XHTTP.open('POST', '/showCommunity', false);
     XHTTP.send();
-    createSelect(XHTTP.responseText);
+    createSelectCom(XHTTP.responseText, 'txtCom');
+}
+
+function appendFeed() {
+    const XHTTP = new XMLHttpRequest();
+    XHTTP.open('POST', '/showFeed', false);
+    XHTTP.send();
+    createSelectPr(XHTTP.responseText, 'txtDes');
 }
 
 /**
@@ -22,9 +29,11 @@ function appendCom() {
  */
 links.forEach((link) => {
     link.addEventListener('click', function (e) {
-        appendCom();
         e.preventDefault();
         let id = e.target.getAttribute("id");
+        setTimeout(() => {
+            appendCom();
+        }, 1000);
         if (id == 'Donate') {
             setTimeout(() => {
                 const donBtn = document.getElementById('btnDonate');
@@ -34,12 +43,25 @@ links.forEach((link) => {
                 });
             }, 500);
         }
-        // if (id == 'Benef') {
-        //     regBenef();
-        // }
-        // if (id == 'Query') {
-        //     query()
-        // }
+        if (id == 'Benef') {
+            setTimeout(() => {
+                const donBtn = document.getElementById('btnRegister');
+                donBtn.addEventListener('click', () => {
+                    regBenef();
+                    // appendCom();
+                });
+            }, 500);
+        }
+        if (id == 'Query') {
+            setTimeout(() => {
+                appendFeed();
+                const donBtn = document.getElementById('btnQuery');
+                donBtn.addEventListener('click', () => {
+                    query();
+                    // appendCom();
+                });
+            }, 500);
+        }
         links.forEach((link) => link.classList.remove('active'));
         e.target.classList.add('active');
         formXHTTP.open('GET', id + '.html', true);
@@ -52,23 +74,29 @@ formXHTTP.onload = function () {
 }
 
 /**
- * Function for request data from BD and show in the UI
+ * Functions for request data from BD and show in the UI
  */
-function createSelect(json_res) {
-	console.log(json_res)
-    let option;
+function createSelectCom(json_res) {
+
     const json = JSON.parse(json_res);
-    /*
-        [{"comId": 12, "comName": "Bosa"}]
-        <option value="12">Bosa</option>
-   */
-    for (let i = 0; i < json.length; i++) {
-        let text = document.createTextNode(json.communityId);
-		console.log(text);
-        /*option = document.createElement('option');
-        option.setAttribute('value', json.communityId);
-        option.appendChild(text);
-        document.getElementById('txtCom').appendChild(option);*/
+
+    for (let j = 0; j < json.length; j++) {
+        let option = document.createElement('option');
+        option.value = json[j].communityId;
+        option.text = json[j].communityName;
+        document.getElementById('txtCom').appendChild(option);
+    }
+
+}
+
+function createSelectPr(json_res) {
+
+    const json = JSON.parse(json_res);
+
+    for (let j = 0; j < json.length; j++) {
+        let option = document.createElement('option');
+        option.text = json[j].name;
+        document.getElementById('txtDes').appendChild(option);
     }
 
 }
@@ -92,7 +120,7 @@ function valDonate() {
     const phone = document.getElementById('txtPhone');
     const community = document.getElementById('txtCom');
     let valType = type.options[type.selectedIndex];
-    let valCom = community.options[type.selectedIndex];
+    let valCom = community.options[community.selectedIndex];
     const donationName = document.getElementById('txtDonation');
     const donationCant = document.getElementById('txtCant');
     const prType = document.getElementById('txtPr');
@@ -112,10 +140,10 @@ function valDonate() {
     } else if (phone.value.trim().length == 0) {
         alert('Telefono no puede estar vacio');
         return false;
-    } /*else if(valCom.value == 'em') {
+    } else if (valCom.value == 'em') {
         alert('Comunidad no es valida');
         return false;
-    }*/ else if (donationName.value.trim().length == 0) {
+    } else if (donationName.value.trim().length == 0) {
         alert('Debes donar algo');
         return false;
     } else if (donationCant.value.trim() < 1) {
@@ -126,6 +154,63 @@ function valDonate() {
         return false;
     } else if (valPrStatus.value == 'em') {
         alert('Estado de producto no valido');
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+/**
+ * This function allows to validate the benef register
+ */
+function valBenefData() {
+
+    const dni = document.getElementById('txtDni');
+    const name = document.getElementById('txtName');
+    const age = document.getElementById('txtAge');
+    const strat = document.getElementById('txtStrat');
+    const phone = document.getElementById('txtPhone');
+    const email = document.getElementById('txtEmail');
+    const community = document.getElementById('txtCom');
+    let valCom = community.options[community.selectedIndex];
+
+    if (dni.value.trim().length == 0) {
+        alert('Dni no es valido');
+        return false;
+    } else if (name.value.trim().length == 0) {
+        alert('Nombre no puede estar vacio');
+        return false;
+    } else if (age.value.trim().length == 0 || age.value.trim() >= 18) {
+        alert('Edad no es valido');
+        return false;
+    } else if (strat.value.trim().length == 0 || strat.value.trim() == '4' || strat.value.trim() == '5' || strat.value.trim() == '6') {
+        alert('Estrato no es valido');
+        return false;
+    } else if (phone.value.trim().length == 0) {
+        alert('Telefono no puede estar vacio');
+        return false;
+    } else if (email.value.trim().length == 0) {
+        alert('E-mail no puede estar vacio');
+        return false;
+    } else if (valCom.value == 'em') {
+        alert('Comunidad no es valida');
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+/**
+ * This function allows to validate the benef register
+ */
+function valQuery() {
+
+    const dni = document.getElementById('txtDni');
+
+    if (dni.value.trim().length == 0) {
+        alert('No estas en la base de datos');
         return false;
     } else {
         return true;
@@ -156,21 +241,80 @@ function donate() {
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
     const http = new XMLHttpRequest();
 
-    let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=11' /*+valCom.text*/ + '&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
+    let valid = valDonate();
 
-    http.open('POST', '/createDonation', true);
+    if (valid) {
+        
+        /**
+        * Parameters for Create donation
+        */
 
-    http.setRequestHeader('Content-type',
-        'application/x-www-form-urlencoded');
+        let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=' + valCom.value + '&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
-    http.onreadystatechange = function () {//Call a function when the state changes.
-        if (http.readyState == 4 && http.status == 200) {
-            alert("creado");
-        } else {
-            alert('no creado');
+        http.open('POST', '/createDonation', true);
+
+        http.setRequestHeader('Content-type',
+            'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function () {//Call a function when the state changes.
+            if (http.readyState == 4 && http.status == 200) {
+                alert("creado");
+            } else {
+                alert('no creado');
+            }
         }
+
+        http.send(params);
     }
 
-    http.send(params);
+}
 
+/**
+ * RegBenef allows to register a beneficiary for request a product
+ */
+
+function regBenef() {
+    const dni = document.getElementById('txtDni').value.trim();
+    const name = document.getElementById('txtName').value.trim();
+    const age = document.getElementById('txtAge').value.trim();
+    const strat = document.getElementById('txtStrat').value.trim();
+    const phone = document.getElementById('txtPhone').value.trim();
+    const email = document.getElementById('txtEmail').value.trim();
+    const community = document.getElementById('txtCom');
+    let valCom = community.options[community.selectedIndex];
+    const http = new XMLHttpRequest();
+
+    let valid = valBenefData();
+
+    if (valid) {
+
+        /**
+        * Parameters for Create donation
+        */
+
+        let params = 'identify=' + dni + '&name=' + name + '&age=' + age + '&strat=' + strat + '&email=' + email + '&phone=' + phone + '&community=' + valCom.value;
+
+        http.open('POST', '/createBeneficed', true);
+
+        http.setRequestHeader('Content-type',
+            'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function () {//Call a function when the state changes.
+            if (http.readyState == 4 && http.status == 200) {
+                alert("creado");
+            } else {
+                alert('no creado');
+            }
+        }
+
+        http.send(params);
+    }
+
+}
+
+/**
+ * query allows to the beneficiary knows what could request
+ */
+function query() {
+    
 }
