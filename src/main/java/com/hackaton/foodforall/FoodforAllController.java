@@ -73,5 +73,4 @@ public class FoodforAllController {
 		System.out.println(bene.BeneficiariesConsult(dni));
 		return bene.BeneficiariesConsult(dni);
 	}
-
 }
