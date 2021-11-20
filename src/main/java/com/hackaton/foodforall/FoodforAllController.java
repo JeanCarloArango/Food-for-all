@@ -41,4 +41,11 @@ public class FoodforAllController {
 		// System.out.println(comm.searchCommunity());
 		return comm.searchCommunity();
 	}
+	
+	@RequestMapping("/ShowBeneficiaries")
+	public ArrayList<Beneficiaries> BeneficiariesConsult(){
+		bene = new BeneficiariesDAO();
+		return bene.BeneficiariesConsult();
+	}
+	
 }
