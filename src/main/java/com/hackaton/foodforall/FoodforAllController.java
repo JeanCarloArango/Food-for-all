@@ -45,6 +45,7 @@ public class FoodforAllController {
 	@RequestMapping("/ShowBeneficiaries")
 	public ArrayList<Beneficiaries> BeneficiariesConsult(String dni){
 		bene = new BeneficiariesDAO();
+		System.out.println(bene.BeneficiariesConsult(dni));
 		return bene.BeneficiariesConsult(dni);
 	}
 	

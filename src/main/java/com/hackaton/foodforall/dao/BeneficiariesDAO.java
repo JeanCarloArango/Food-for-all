@@ -51,8 +51,8 @@ public class BeneficiariesDAO {
 				sentence = this.conn.pStm(sql);
 			} else {
 				sql = "SELECT * FROM Beneficiaries WHERE dni = ?;";
-				sentence.setString(1, identify);
 				sentence = this.conn.pStm(sql);
+				sentence.setString(1, identify);
 			}
 
 			ResultSet res = sentence.executeQuery();
@@ -63,6 +63,7 @@ public class BeneficiariesDAO {
 						res.getInt("status"), res.getString("email"), res.getString("phone"),
 						res.getInt("community_id"));
 				Benefi.add(bene);
+
 			}
 
 			res.close();

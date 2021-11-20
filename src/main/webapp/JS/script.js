@@ -7,7 +7,6 @@
  */
 const links = document.querySelectorAll('#menu a');
 const mainCont = document.getElementById('mainCont');
-const formXHTTP = new XMLHttpRequest();
 
 function appendCom() {
     const XHTTP = new XMLHttpRequest();
@@ -17,10 +16,10 @@ function appendCom() {
 }
 
 function appendFeed() {
-    const XHTTP = new XMLHttpRequest();
-    XHTTP.open('POST', '/showFeed', false);
-    XHTTP.send();
-    createSelectPr(XHTTP.responseText, 'txtDes');
+    const XHTTPF = new XMLHttpRequest();
+    XHTTPF.open('POST', '/showFeed', false);
+    XHTTPF.send();
+    createSelectPr(XHTTPF.responseText, 'txtDes');
 }
 
 /**
@@ -28,37 +27,35 @@ function appendFeed() {
  * and charges the content of main container.
  */
 links.forEach((link) => {
+    const formXHTTP = new XMLHttpRequest();
     link.addEventListener('click', function (e) {
         e.preventDefault();
         let id = e.target.getAttribute("id");
-        setTimeout(() => {
-            appendCom();
-        }, 1000);
         if (id == 'Donate') {
             setTimeout(() => {
+                appendCom();
                 const donBtn = document.getElementById('btnDonate');
                 donBtn.addEventListener('click', () => {
                     donate();
-                    // appendCom();
                 });
             }, 500);
         }
-        if (id == 'Benef') {
+        else if (id == 'Benef') {
             setTimeout(() => {
+                appendCom();
                 const donBtn = document.getElementById('btnRegister');
                 donBtn.addEventListener('click', () => {
                     regBenef();
-                    // appendCom();
                 });
             }, 500);
         }
-        if (id == 'Query') {
+        else if (id == 'Query') {
+            console.log('Hola mundo');
             setTimeout(() => {
                 appendFeed();
                 const donBtn = document.getElementById('btnQuery');
                 donBtn.addEventListener('click', () => {
                     query();
-                    // appendCom();
                 });
             }, 500);
         }
@@ -67,11 +64,11 @@ links.forEach((link) => {
         formXHTTP.open('GET', id + '.html', true);
         formXHTTP.send();
     });
+    formXHTTP.onload = function () {
+        mainCont.innerHTML = this.responseText;
+    }
 });
 
-formXHTTP.onload = function () {
-    mainCont.innerHTML = this.responseText;
-}
 
 /**
  * Functions for request data from BD and show in the UI
@@ -91,6 +88,7 @@ function createSelectCom(json_res) {
 
 function createSelectPr(json_res) {
 
+    console.log(json_res);
     const json = JSON.parse(json_res);
 
     for (let j = 0; j < json.length; j++) {
@@ -239,32 +237,30 @@ function donate() {
     let valPrType = prType.options[prType.selectedIndex];
     const prStatus = document.getElementById('txtStPr');
     let valPrStatus = prStatus.options[prStatus.selectedIndex];
-    const http = new XMLHttpRequest();
+    const httpD = new XMLHttpRequest();
 
     let valid = valDonate();
 
     if (valid) {
-        
+
         /**
         * Parameters for Create donation
         */
 
         let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=' + valCom.value + '&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
-        http.open('POST', '/createDonation', true);
+        httpD.open('POST', '/createDonation', true);
 
-        http.setRequestHeader('Content-type',
+        httpD.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        http.onreadystatechange = function () {//Call a function when the state changes.
-            if (http.readyState == 4 && http.status == 200) {
-                alert("creado");
-            } else {
-                alert('no creado');
-            }
+        if (httpD.readyState == 4 && httpD.status == 200) {
+            alert("creado");
+        } else {
+            alert('no creado');
         }
 
-        http.send(params);
+        httpD.send(params);
     }
 
 }
@@ -282,7 +278,7 @@ function regBenef() {
     const email = document.getElementById('txtEmail').value.trim();
     const community = document.getElementById('txtCom');
     let valCom = community.options[community.selectedIndex];
-    const http = new XMLHttpRequest();
+    const httpR = new XMLHttpRequest();
 
     let valid = valBenefData();
 
@@ -294,20 +290,19 @@ function regBenef() {
 
         let params = 'identify=' + dni + '&name=' + name + '&age=' + age + '&strat=' + strat + '&email=' + email + '&phone=' + phone + '&community=' + valCom.value;
 
-        http.open('POST', '/createBeneficed', true);
+        httpR.open('POST', '/createBeneficed', true);
 
-        http.setRequestHeader('Content-type',
+        httpR.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        http.onreadystatechange = function () {//Call a function when the state changes.
-            if (http.readyState == 4 && http.status == 200) {
-                alert("creado");
-            } else {
-                alert('no creado');
-            }
+        if (httpR.readyState == 4 && httpR.status == 200) {
+            alert("creado");
+        } else {
+            alert('no creado');
         }
 
-        http.send(params);
+
+        httpR.send(params);
     }
 
 }
@@ -316,5 +311,35 @@ function regBenef() {
  * query allows to the beneficiary knows what could request
  */
 function query() {
-    
+
+    const dni = document.getElementById('txtDni').value.trim();
+
+    const httpQ = new XMLHttpRequest();
+
+    let valid = valQuery();
+
+    if (valid) {
+
+        /**
+        * Parameters for Create donation
+        */
+
+        let params = `dni=${dni}`;
+
+        httpQ.open('POST', '/ShowBeneficiaries', true);
+
+        httpQ.setRequestHeader('Content-type',
+            'application/x-www-form-urlencoded');
+
+        if (httpQ.status == 200) {
+            if (httpQ.responseText === '[]') {
+                alert('No puedes acceder al beneficio');
+            }
+        } else {
+            alert('Puedes recoger los productos en el centro de acopio mas cercano');
+        }
+
+        httpQ.send(params);
+    }
+
 }
