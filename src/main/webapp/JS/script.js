@@ -206,9 +206,14 @@ function valBenefData() {
 function valQuery() {
 
     const dni = document.getElementById('txtDni');
+    const products = document.getElementById('txtDes');
+    let valPr = products.options[products.selectedIndex];
 
     if (dni.value.trim().length == 0) {
         alert('No estas en la base de datos');
+        return false;
+    } else if (valPr.value == 'em') {
+        alert('Selecciona un producto');
         return false;
     } else {
         return true;
