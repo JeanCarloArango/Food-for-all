@@ -40,13 +40,16 @@ public class BeneficiariesDAO {
 		}
 	}
 
-	public ArrayList<Beneficiaries> BeneficiariesConsult() {
+	public ArrayList<Beneficiaries> BeneficiariesConsult(String identify) {
 		conn = new ConnectionDB();
 		ArrayList<Beneficiaries> Benefi = new ArrayList<Beneficiaries>();
 
 		try {
 
 			sql = "SELECT * FROM Beneficiaries;";
+			if (!identify.trim().equals("null")) {
+				sql = sql + "WHERE identify = '" + identify + "'";
+			}
 			sentence = this.conn.pStm(sql);
 			ResultSet res = sentence.executeQuery();
 
