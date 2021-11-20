@@ -10,14 +10,14 @@ const mainCont = document.getElementById('mainCont');
 
 function appendCom() {
     const XHTTP = new XMLHttpRequest();
-    XHTTP.open('POST', '/showCommunity', false);
+    XHTTP.open('POST', '/FoodForAll/showCommunity', false);
     XHTTP.send();
     createSelectCom(XHTTP.responseText, 'txtCom');
 }
 
 function appendFeed() {
     const XHTTPF = new XMLHttpRequest();
-    XHTTPF.open('POST', '/showFeed', false);
+    XHTTPF.open('POST', '/FoodForAll/showFeed', false);
     XHTTPF.send();
     createSelectPr(XHTTPF.responseText, 'txtDes');
 }
@@ -249,7 +249,7 @@ function donate() {
 
         let params = 'nameD=' + name + '&emailD=' + email + '&phoneD=' + phone + '&typeD=' + valType.text + '&communityD=' + valCom.value + '&nameF=' + donationName + '&typeF=' + valPrType.text + '&countF=' + donationCant + '&statusF=' + valPrStatus.text;
 
-        httpD.open('POST', '/createDonation', true);
+        httpD.open('POST', '/FoodForAll/createDonation', true);
 
         httpD.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
@@ -290,7 +290,7 @@ function regBenef() {
 
         let params = 'identify=' + dni + '&name=' + name + '&age=' + age + '&strat=' + strat + '&email=' + email + '&phone=' + phone + '&community=' + valCom.value;
 
-        httpR.open('POST', '/createBeneficed', true);
+        httpR.open('POST', '/FoodForAll/createBeneficed', true);
 
         httpR.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
@@ -326,7 +326,7 @@ function query() {
 
         let params = `dni=${dni}`;
 
-        httpQ.open('POST', '/ShowBeneficiaries', true);
+        httpQ.open('POST', '/FoodForAll/ShowBeneficiaries', true);
 
         httpQ.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
