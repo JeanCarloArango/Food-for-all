@@ -34,7 +34,6 @@ public class DonorDAO {
 			sentence.close();
 			return res;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return false;
 		}

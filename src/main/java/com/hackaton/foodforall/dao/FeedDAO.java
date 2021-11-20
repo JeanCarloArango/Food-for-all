@@ -66,7 +66,6 @@ public class FeedDAO {
 			sentence.close();
 			return res;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return false;
 		}
