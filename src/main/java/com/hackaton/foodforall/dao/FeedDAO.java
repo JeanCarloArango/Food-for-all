@@ -13,7 +13,7 @@ public class FeedDAO {
 	private PreparedStatement sentence;
 	String sql;
 	/**
-	 
+	 This method will return all the food in the database.
 	 **/
 	public ArrayList<Feed> feedConsult() {
 
@@ -40,6 +40,10 @@ public class FeedDAO {
 		return feeds;
 	}
 	
+	/**
+	 * This method receives as a parameter an object of type donation that 
+	 * brings the donor's data and the data of the donated food, in this case 
+	 * only the donor's data will be saved.*/
 	public Boolean createFeed(Donation feed) {
 		conn = new ConnectionDB();
 		try {
@@ -68,6 +72,9 @@ public class FeedDAO {
 		}
 	}
 	
+	/**
+	 * This method receives as a parameter a donor email and will 
+	 * return the id with which the donor is registered in the database.*/
 	public int donorID (String email) {
 		conn = new ConnectionDB();
 		int idDonor = 0;
