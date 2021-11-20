@@ -25,12 +25,15 @@ public class Donation {
 		this.countF = countF;
 		this.statusF = statusF;
 	}
+	
 	public String getNameD() {
 		return nameD;
 	}
+	
 	public String getEmailD() {
 		return emailD;
 	}
+	
 	public String getPhoneD() {
 		return phoneD;
 	}

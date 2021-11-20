@@ -1,20 +1,24 @@
 package com.hackaton.foodforall.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.hackaton.foodforall.dto.Beneficiaries;
 
 public class BeneficiariesDAO {
+	
+	/**
+	 * Definition variables globals*/
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
 	String sql;
 
+	/**
+	 * This method receives as a parameter an object of type beneficiary
+	 * which will be inserted in the database.*/
 	public Boolean createBeneficiaries(Beneficiaries ben) {
 		conn = new ConnectionDB();
 		try {
-			// age int, status int, community int
 			sql = "INSERT INTO BENEFICIARIES (DNI, NAME, AGE, STATUS, EMAIL, PHONE,"
 					+ " COMMUNITY_ID) VALUES (?,?,?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
@@ -40,6 +44,10 @@ public class BeneficiariesDAO {
 		}
 	}
 
+	/**
+	 * This method receives as a parameter the identification of the beneficiary
+	 *  and will return a single record if the identification is given and if 
+	 *  none is given, all the records in the database will be listed.*/
 	public ArrayList<Beneficiaries> BeneficiariesConsult(String identify) {
 		conn = new ConnectionDB();
 		ArrayList<Beneficiaries> Benefi = new ArrayList<Beneficiaries>();

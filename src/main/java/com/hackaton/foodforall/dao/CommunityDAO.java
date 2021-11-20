@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import com.hackaton.foodforall.dto.Community;
 
 public class CommunityDAO {
+	/**
+	 * defined variables globals*/
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
 	private String sql;
 	
+	/**
+	 * This method will return all the locations that are registered 
+	 * in the database.*/
 	public ArrayList<Community> searchCommunity() {
 		conn = new ConnectionDB();
 		ArrayList<Community> coms = new ArrayList<Community>();

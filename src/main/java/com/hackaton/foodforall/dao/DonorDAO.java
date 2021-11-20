@@ -4,10 +4,16 @@ import java.sql.PreparedStatement;
 import com.hackaton.foodforall.dto.*;
 
 public class DonorDAO {
+	/**
+	 * Defined variables globals*/
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
 	String sql;
 
+	/**
+	 * This method receives as a parameter an object of type 
+	 * donation that brings the donor's data and the data of the 
+	 * donated food, in this case only the donor's data will be saved.*/
 	public Boolean createDonationF(Donation don) {
 		conn = new ConnectionDB();
 		try {
