@@ -46,22 +46,27 @@ public class BeneficiariesDAO {
 
 		try {
 
-			sql = "SELECT * FROM Beneficiaries;";
-			if (!identify.trim().equals("null")) {
-				sql = sql + "WHERE identify = '" + identify + "'";
+			if (identify == "") {
+				sql = "SELECT * FROM Beneficiaries;";
+				sentence = this.conn.pStm(sql);
+			} else {
+				sql = "SELECT * FROM Beneficiaries WHERE dni = ?;";
+				sentence.setString(1, identify);
+				sentence = this.conn.pStm(sql);
 			}
-			sentence = this.conn.pStm(sql);
+
 			ResultSet res = sentence.executeQuery();
 
 			while (res.next()) {
 
-				Beneficiaries bene = new Beneficiaries(res.getString("identify"), res.getString("name"),
-						res.getInt("age"), res.getInt("strat"), res.getString("email"), res.getString("phone"),
-						res.getInt("community"));
+				Beneficiaries bene = new Beneficiaries(res.getString("dni"), res.getString("name"), res.getInt("age"),
+						res.getInt("status"), res.getString("email"), res.getString("phone"),
+						res.getInt("community_id"));
 				Benefi.add(bene);
 			}
 
 			res.close();
+			sentence.close();
 			conn.disconnect();
 
 		} catch (Exception e) {

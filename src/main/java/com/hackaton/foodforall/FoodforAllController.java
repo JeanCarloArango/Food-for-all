@@ -43,9 +43,9 @@ public class FoodforAllController {
 	}
 	
 	@RequestMapping("/ShowBeneficiaries")
-	public ArrayList<Beneficiaries> BeneficiariesConsult(){
+	public ArrayList<Beneficiaries> BeneficiariesConsult(String dni){
 		bene = new BeneficiariesDAO();
-		return bene.BeneficiariesConsult();
+		return bene.BeneficiariesConsult(dni);
 	}
 	
 }
