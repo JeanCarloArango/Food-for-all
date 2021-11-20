@@ -20,7 +20,7 @@ public class FoodforAllController {
 	 * This microservice show the list of feed donated that are into database, for
 	 * the beneficiaries can will choose.
 	 */
-	@RequestMapping("/showFeed")
+	@RequestMapping("/FoodForAll/showFeed")
 	public ArrayList<Feed> feedConsult() {
 		feed = new FeedDAO();
 		return feed.feedConsult();
@@ -30,7 +30,7 @@ public class FoodforAllController {
 	 * This microservice insert into database the beneficiaries for that they can
 	 * receive the donations.
 	 */
-	@RequestMapping("/createBeneficed")
+	@RequestMapping("/FoodForAll/createBeneficed")
 	public String InsertBeneficiare(Beneficiaries ben) {
 		bene = new BeneficiariesDAO();
 		bene.createBeneficiaries(ben);
@@ -42,7 +42,7 @@ public class FoodforAllController {
 	 * that the beneficiaries will can receive them, and too insert into database
 	 * the donors that can will be a person or a organitazion.
 	 */
-	@RequestMapping("/createDonation")
+	@RequestMapping("/FoodForAll/createDonation")
 	public String InsertDonor(Donation don) {
 		donor = new DonorDAO();
 		feed = new FeedDAO();
@@ -55,7 +55,7 @@ public class FoodforAllController {
 	 * This microservice show the list of communities that are into database, for
 	 * that the beneficiaries can will choose your community.
 	 */
-	@RequestMapping("/showCommunity")
+	@RequestMapping("/FoodForAll/showCommunity")
 	public ArrayList<Community> SearchCommunity() {
 		comm = new CommunityDAO();
 		// System.out.println(comm.searchCommunity());
@@ -67,7 +67,7 @@ public class FoodforAllController {
 	 * that the beneficiary can will know if are into database and receive
 	 * donations.
 	 */
-	@RequestMapping("/ShowBeneficiaries")
+	@RequestMapping("/FoodForAll/ShowBeneficiaries")
 	public ArrayList<Beneficiaries> BeneficiariesConsult(String dni) {
 		bene = new BeneficiariesDAO();
 		System.out.println(bene.BeneficiariesConsult(dni));

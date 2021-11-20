@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class FoodforallApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		System.setProperty("server.servlet.context-path", "/BraveTeamApp");
+		System.setProperty("server.servlet.context-path", "/FoodForAll");
 		SpringApplication.run(FoodforallApplication.class, args);
 	}
 
