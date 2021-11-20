@@ -8,14 +8,16 @@ import com.hackaton.foodforall.dto.Beneficiaries;
 public class BeneficiariesDAO {
 	
 	/**
-	 * Definition variables globals*/
+	 * Definition variables globals
+	 */
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
 	String sql;
 
 	/**
 	 * This method receives as a parameter an object of type beneficiary
-	 * which will be inserted in the database.*/
+	 * which will be inserted in the database.
+	 */
 	public Boolean createBeneficiaries(Beneficiaries ben) {
 		conn = new ConnectionDB();
 		try {
@@ -38,7 +40,6 @@ public class BeneficiariesDAO {
 			sentence.close();
 			return res;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return false;
 		}
@@ -47,7 +48,8 @@ public class BeneficiariesDAO {
 	/**
 	 * This method receives as a parameter the identification of the beneficiary
 	 *  and will return a single record if the identification is given and if 
-	 *  none is given, all the records in the database will be listed.*/
+	 *  none is given, all the records in the database will be listed.
+	 */
 	public ArrayList<Beneficiaries> BeneficiariesConsult(String identify) {
 		conn = new ConnectionDB();
 		ArrayList<Beneficiaries> Benefi = new ArrayList<Beneficiaries>();

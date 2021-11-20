@@ -5,7 +5,8 @@ import com.hackaton.foodforall.dto.*;
 
 public class DonorDAO {
 	/**
-	 * Defined variables globals*/
+	 * Defined variables globals
+	 */
 	private ConnectionDB conn;
 	private PreparedStatement sentence;
 	String sql;
@@ -13,7 +14,8 @@ public class DonorDAO {
 	/**
 	 * This method receives as a parameter an object of type 
 	 * donation that brings the donor's data and the data of the 
-	 * donated food, in this case only the donor's data will be saved.*/
+	 * donated food, in this case only the donor's data will be saved.
+	 */
 	public Boolean createDonationF(Donation don) {
 		conn = new ConnectionDB();
 		try {
@@ -34,7 +36,6 @@ public class DonorDAO {
 			sentence.close();
 			return res;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return false;
 		}
