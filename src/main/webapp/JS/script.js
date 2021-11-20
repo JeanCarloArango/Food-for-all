@@ -50,7 +50,6 @@ links.forEach((link) => {
             }, 500);
         }
         else if (id == 'Query') {
-            console.log('Hola mundo');
             setTimeout(() => {
                 appendFeed();
                 const donBtn = document.getElementById('btnQuery');
@@ -88,7 +87,6 @@ function createSelectCom(json_res) {
 
 function createSelectPr(json_res) {
 
-    console.log(json_res);
     const json = JSON.parse(json_res);
 
     for (let j = 0; j < json.length; j++) {
@@ -209,11 +207,11 @@ function valQuery() {
     const products = document.getElementById('txtDes');
     let valPr = products.options[products.selectedIndex];
 
-    if (dni.value.trim().length == 0) {
-        alert('No estas en la base de datos');
-        return false;
-    } else if (valPr.value == 'em') {
+    if (valPr.value == 'em') {
         alert('Selecciona un producto');
+        return false;
+    } else if (dni.value.trim().length == 0) {
+        alert('No estas en la base de datos');
         return false;
     } else {
         return true;

@@ -1,3 +1,8 @@
+body {
+	background-image: url('../assets/BG.jpg');
+	background-size: cover;
+}
+
 /* MAin styles for header */
 .header {
 	width: 100%;
@@ -38,6 +43,7 @@ a:hover, .active {
 }
 
 /* Main Form Styles */
+
 .form, [class^=col] {
 	display: flex;
 	justify-content: center;
@@ -47,12 +53,19 @@ a:hover, .active {
 	background-color: transparent;
 }
 
+.form {
+	background-color: rgba(255, 255, 255, 0.5); border-radius: 1%;
+	padding-block: 2em;
+	padding-inline: 2em;
+	max-width: 800px;
+	margin: auto;
+}
+
 .form-cont {
-	width: 30%;
+	width: 50%;
 }
 
 .form .form-grid {
-	width: auto;
 	display: grid;
 	grid-template-columns: 50% 2fr;
 	justify-content: space-between;
@@ -67,6 +80,12 @@ a:hover, .active {
 	width: 100%;
 	padding-block: .5em;
 	font-size: 1.2em;
+	background-color: transparent;
+}
+
+.form .textIn::placeholder {
+	font-weight: bold;
+	color: #000;
 }
 
 .form .lbl {
@@ -77,6 +96,7 @@ a:hover, .active {
 .form .comboBox {
 	padding-block: .5em;
 	padding-inline: 1em;
+	background-color: transparent;
 	width: 75%;
 	border: none;
 	border-bottom: .05em solid #000;
