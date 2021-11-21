@@ -260,10 +260,12 @@ function donate() {
 
 		httpD.onreadystatechange = function() {
 			if (httpD.readyState == 4 && httpD.status == 200) {
-				alert("creado");
-			} else {
-				alert('no creado');
-			}
+				if(httpD.responseText == 'true') {
+					alert("Donacion enviada");
+				} else {
+					alert('no creado');
+				}
+			} 
 		}
 
 		httpD.send(params);
@@ -303,10 +305,12 @@ function regBenef() {
 
 		httpR.onreadystatechange = function() {
 			if (httpR.readyState == 4 && httpR.status == 200) {
-				alert("creado");
-			} else {
-				alert('no creado');
-			}
+				if(httpR.responseText == 'true') {
+					alert("creado");
+				} else {
+					alert('no creado');
+				}
+			} 
 		}
 
 		httpR.send(params);

@@ -31,10 +31,9 @@ public class FoodforAllController {
 	 * receive the donations.
 	 */
 	@RequestMapping("/createBeneficed")
-	public String InsertBeneficiare(Beneficiaries ben) {
+	public Boolean InsertBeneficiare(Beneficiaries ben) {
 		bene = new BeneficiariesDAO();
-		bene.createBeneficiaries(ben);
-		return "Microservice has insert a beneficiary";
+		return bene.createBeneficiaries(ben);
 	}
 
 	/*
@@ -43,12 +42,11 @@ public class FoodforAllController {
 	 * the donors that can will be a person or a organitazion.
 	 */
 	@RequestMapping("/createDonation")
-	public String InsertDonor(Donation don) {
+	public Boolean InsertDonor(Donation don) {
 		donor = new DonorDAO();
 		feed = new FeedDAO();
 		donor.createDonationF(don);
-		feed.createFeed(don);
-		return "Microservice has insert a donation";
+		return feed.createFeed(don);
 	}
 
 	/*
