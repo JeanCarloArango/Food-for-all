@@ -5,10 +5,14 @@ import java.sql.*;
 public class ConnectionDB {
 	/**
 	 * Connection variable definition*/
-	private String bd = "foodforall";
-	private String login = "root";
-	private String password = "admin";
-	private String url = "jdbc:mysql://localhost/" + bd;
+//	private String bd = "foodforall";
+//	private String login = "root";
+//	private String password = "admin";
+//	private String url = "jdbc:mysql://localhost/" + bd;
+	private String bd = "foodForAll";
+	private String login = "admin";
+	private String password = "MisionTIC2022GRUPO02";
+	private String url = "jdbc:mysql://misiontic2022grupo02.czo3ixoe3xoe.us-east-1.rds.amazonaws.com/" + bd;
 	private Connection connection = null;
 	private PreparedStatement sentence;
 	
@@ -18,7 +22,8 @@ public class ConnectionDB {
 	 * of the database are sent as parameters.*/
 	public ConnectionDB() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("org.mariadb.jdbc.Driver");
 			connection = DriverManager.getConnection(url, login, password);
 			if (connection != null) {
 				System.out.println("Conexion a base de datos " + bd + " OK\n");
