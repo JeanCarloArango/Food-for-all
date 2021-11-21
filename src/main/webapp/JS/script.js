@@ -334,7 +334,7 @@ function query() {
         httpQ.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        if (httpQ.readyState == 4 && httpQ.status == 200) {
+        if (httpQ.status == 200) {
             if (httpQ.responseText === '[]') {
                 alert('No puedes acceder al beneficio');
             }
