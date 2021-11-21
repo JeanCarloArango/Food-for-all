@@ -257,7 +257,7 @@ function donate() {
         httpD.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        if (httpD.readyState == 4 && httpD.status == 200) {
+        if (httpD.status == 200) {
             alert("creado");
         } else {
             alert('no creado');
@@ -298,7 +298,7 @@ function regBenef() {
         httpR.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        if (httpR.readyState == 4 && httpR.status == 200) {
+        if (httpR.status == 200) {
             alert("creado");
         } else {
             alert('no creado');
