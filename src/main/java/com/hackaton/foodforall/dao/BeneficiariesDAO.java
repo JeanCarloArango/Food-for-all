@@ -21,7 +21,7 @@ public class BeneficiariesDAO {
 	public Boolean createBeneficiaries(Beneficiaries ben) {
 		conn = new ConnectionDB();
 		try {
-			sql = "INSERT INTO BENEFICIARIES (DNI, NAME, AGE, STATUS, EMAIL, PHONE,"
+			sql = "INSERT INTO beneficiaries (DNI, NAME, AGE, STATUS, EMAIL, PHONE,"
 					+ " COMMUNITY_ID) VALUES (?,?,?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
 			sentence.setString(1, ben.getIdentify());
@@ -60,7 +60,7 @@ public class BeneficiariesDAO {
 				sql = "SELECT * FROM Beneficiaries;";
 				sentence = this.conn.pStm(sql);
 			} else {
-				sql = "SELECT * FROM Beneficiaries WHERE dni = ?;";
+				sql = "SELECT * FROM beneficiaries WHERE dni = ?;";
 				sentence = this.conn.pStm(sql);
 				sentence.setString(1, identify);
 			}

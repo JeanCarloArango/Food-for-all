@@ -48,7 +48,7 @@ public class FeedDAO {
 		conn = new ConnectionDB();
 		try {
 			int id = donorID(feed.getEmailD());
-			sql = "INSERT INTO FEED (NAME, TYPE, CANTIDAD, STATUS, DONOR_ID) "
+			sql = "INSERT INTO feed (NAME, TYPE, CANTIDAD, STATUS, DONOR_ID) "
 					+ "VALUES (?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
 			sentence.setString(1, feed.getNameF());
@@ -78,7 +78,7 @@ public class FeedDAO {
 		conn = new ConnectionDB();
 		int idDonor = 0;
 		try {
-			sql = "SELECT * FROM DONOR WHERE EMAIL=?;";
+			sql = "SELECT * FROM donor WHERE EMAIL=?;";
 			sentence = this.conn.pStm(sql);
 			sentence.setString(1, email);
 			
