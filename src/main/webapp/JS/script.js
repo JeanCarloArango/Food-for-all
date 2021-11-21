@@ -211,7 +211,7 @@ function valQuery() {
         alert('Selecciona un producto');
         return false;
     } else if (dni.value.trim().length == 0) {
-        alert('No estas en la base de datos');
+        alert('No existe ese beneficiario');
         return false;
     } else {
         return true;
@@ -334,7 +334,7 @@ function query() {
         httpQ.setRequestHeader('Content-type',
             'application/x-www-form-urlencoded');
 
-        if (httpQ.status == 200) {
+        if (httpQ.readyState == 4 && httpQ.status == 200) {
             if (httpQ.responseText === '[]') {
                 alert('No puedes acceder al beneficio');
             }
