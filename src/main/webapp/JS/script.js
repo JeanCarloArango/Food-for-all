@@ -61,6 +61,7 @@ links.forEach((link) => {
 		links.forEach((link) => link.classList.remove('active'));
 		e.target.classList.add('active');
 		formXHTTP.open('GET', id + '.html', true);
+		
 		formXHTTP.send();
 	});
 	formXHTTP.onload = function() {
