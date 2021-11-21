@@ -19,7 +19,7 @@ public class DonorDAO {
 	public Boolean createDonationF(Donation don) {
 		conn = new ConnectionDB();
 		try {
-			sql = "INSERT INTO DONOR (NAME, EMAIL, PHONE,"
+			sql = "INSERT INTO donor (NAME, EMAIL, PHONE,"
 					+ " TIPO, COMMUNITY_ID) VALUES (?,?,?,?,?);";
 			sentence = this.conn.pStm(sql);
 			sentence.setString(1, don.getNameD());
