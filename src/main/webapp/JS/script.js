@@ -346,6 +346,13 @@ function query() {
 				}
 			}
 		}
+        if (httpQ.readyState == 4 && httpQ.status == 200) {
+            if (httpQ.responseText === '[]') {
+                alert('No puedes acceder al beneficio');
+            }
+        } else {
+            alert('Puedes recoger los productos en el centro de acopio mas cercano');
+        }
 
 		httpQ.send(params);
 	}
